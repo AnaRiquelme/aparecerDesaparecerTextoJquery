@@ -11,7 +11,12 @@ and open the template in the editor.
         <style>
             .fondo
             {
-            background-color: yellow;    
+                background-color: yellow;    
+            }
+            
+            .negrita
+            {
+                font-weight: bold;
             }
         </style>
         <meta charset="utf-8" />
@@ -20,17 +25,26 @@ and open the template in the editor.
 
             $(document).ready(function() {
                 var color = 0;
-                var  subrayar = function() {
-                
-                    if (color == 0){ //si el color no es rojo que lo ponga rojo
+                var letrasfuera = 0;
+                var subrayar = function() {
+
+                    if (color == 0) { //si el color no es rojo que lo ponga rojo
                         $(this).addClass("fondo");
-                    } 
-                
+                    }
+
                 };
-                $("span").hover(subrayar);
-                $('#imagenImprimida').html('<img src="' + image + '"/>');
- $(this).text();
-    
+                $("span").hover(subrayar).text();
+                $("span").click(function() {
+                    $(this).fadeOut(900);
+                    $("div").text($(this).text() + " se ha desvanecido");
+
+                });
+
+                $("#boton").click(function() {
+                    $("span").fadeIn(900);
+                    $("span").addClass("negrita");
+
+                });
 
             });
         </script>
